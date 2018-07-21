@@ -62,8 +62,6 @@
 </template>
 
 <script>
-    import axios from 'axios';
-
     export default {
         props: ['dataVotes'],
 
@@ -72,9 +70,9 @@
                 newVote: {
                     picked: '',
                     reason: '',
-                    name: ''
+                    name: '',
                 },
-                votes: this.dataVotes
+                votes: this.dataVotes,
             }
         },
 
@@ -93,7 +91,7 @@
                         this.newVote = {
                             picked: '',
                             reason: '',
-                            name: ''
+                            name: '',
                         };
                     })
                     .catch((error) => console.log(error));

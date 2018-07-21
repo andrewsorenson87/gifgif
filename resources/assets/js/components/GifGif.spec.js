@@ -1,8 +1,9 @@
 import GifGif from '@/GifGif.vue';
 import { shallowMount } from '@vue/test-utils';
-import axios from 'axios';
 
-jest.mock('axios');
+window.axios = {
+    post: jest.fn().mockImplementation(() => Promise.resolve([])),
+};
 
 describe('GifGif', () => {
     let wrapper;
@@ -10,7 +11,7 @@ describe('GifGif', () => {
     beforeEach(() => {
         wrapper = shallowMount(GifGif, {
             propsData: {
-                dataVotes: []
+                dataVotes: [],
             }
         });
     });
@@ -29,7 +30,7 @@ describe('GifGif', () => {
                 dataVotes: [{
                     picked: 'gif2',
                     reason,
-                    name
+                    name,
                 }]
             }
         });
@@ -52,10 +53,8 @@ describe('GifGif', () => {
         let vote = {
             picked: 'gif2',
             reason: 'All the cool kids say it that way',
-            name: 'Samantha'
+            name: 'Samantha',
         };
-
-        axios.post.mockImplementation(() => Promise.resolve([]));
 
         expect(wrapper.vm.votes.length).toBe(0);
 
