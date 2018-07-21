@@ -75,7 +75,7 @@ exports[`GifGif shows votes loaded from props 1`] = `
     <ul>
       <li class="py-4">
         <p><span class="font-light uppercase">gif</span> — It is not jrafical interchange format</p>
-        <p class="text-sm mt-2">Submitted by <span class="uppercase">Matt Stauffer</span> on 2018-07-25</p>
+        <p class="text-sm mt-2">Submitted by <span class="uppercase">Matt Stauffer</span></p>
       </li>
     </ul>
   </div>
@@ -119,7 +119,7 @@ exports[`GifGif submits a reason for the pronunciation 1`] = `
     <ul>
       <li class="py-4">
         <p><span class="font-light uppercase">gif</span> — All the cool kids say it that way</p>
-        <p class="text-sm mt-2">Submitted by <span class="uppercase">Samantha</span> on 2018-07-25</p>
+        <p class="text-sm mt-2">Submitted by <span class="uppercase">Samantha</span></p>
       </li>
     </ul>
   </div>

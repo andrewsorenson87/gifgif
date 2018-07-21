@@ -13596,8 +13596,7 @@ var render = function() {
                 _vm._v("Submitted by "),
                 _c("span", { staticClass: "uppercase" }, [
                   _vm._v(_vm._s(vote.name))
-                ]),
-                _vm._v(" on 2018-07-25")
+                ])
               ])
             ])
           ])

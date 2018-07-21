@@ -54,7 +54,7 @@
                 <li class="py-4">
                     <p><span class="font-light uppercase">gif</span> —
                         {{ vote.reason }}</p>
-                    <p class="text-sm mt-2">Submitted by <span class="uppercase">{{ vote.name }}</span> on 2018-07-25</p>
+                    <p class="text-sm mt-2">Submitted by <span class="uppercase">{{ vote.name }}</span></p>
                 </li>
             </ul>
         </div>
