@@ -65,6 +65,8 @@
     import axios from 'axios';
 
     export default {
+        props: ['dataVotes'],
+
         data() {
             return {
                 newVote: {
@@ -72,7 +74,7 @@
                     reason: '',
                     name: ''
                 },
-                votes: []
+                votes: this.dataVotes
             }
         },
 
@@ -84,13 +86,17 @@
 
         methods: {
             add() {
-                this.votes.push(this.newVote);
+                axios.post('/api/votes', this.newVote)
+                    .then(() => {
+                        this.votes.push(this.newVote);
 
-                this.newVote = {
-                    picked: '',
-                    reason: '',
-                    name: ''
-                };
+                        this.newVote = {
+                            picked: '',
+                            reason: '',
+                            name: ''
+                        };
+                    })
+                    .catch((error) => console.log(error));
             }
         }
     }

@@ -13390,6 +13390,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['dataVotes'],
+
     data: function data() {
         return {
             newVote: {
@@ -13397,7 +13399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reason: '',
                 name: ''
             },
-            votes: []
+            votes: this.dataVotes
         };
     },
 
@@ -13410,13 +13412,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         add: function add() {
-            this.votes.push(this.newVote);
+            var _this = this;
 
-            this.newVote = {
-                picked: '',
-                reason: '',
-                name: ''
-            };
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/votes', this.newVote).then(function () {
+                _this.votes.push(_this.newVote);
+
+                _this.newVote = {
+                    picked: '',
+                    reason: '',
+                    name: ''
+                };
+            }).catch(function (error) {
+                return console.log(error);
+            });
         }
     }
 });
