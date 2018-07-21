@@ -13381,10 +13381,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            newVote: {
+                picked: '',
+                reason: '',
+                name: ''
+            },
+            votes: []
+        };
+    },
+
+
+    computed: {
+        valid: function valid() {
+            return this.newVote.picked && this.newVote.reason && this.newVote.name;
+        }
+    },
+
+    methods: {
+        add: function add() {
+            this.votes.push(this.newVote);
+
+            this.newVote = {
+                picked: '',
+                reason: '',
+                name: ''
+            };
+        }
+    }
+});
 
 /***/ }),
 /* 37 */
@@ -13394,117 +13429,185 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "rounded shadow text-grey-darker" }, [
+      _c("div", { staticClass: "py-8" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex justify-center py-8" }, [
+          _c("label", { staticClass: "mx-8", attrs: { for: "gif1" } }, [
+            _vm._v("\n                    GIF\n                    "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newVote.picked,
+                  expression: "newVote.picked"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                id: "gif1",
+                value: "gif1",
+                name: "pronunciation"
+              },
+              domProps: { checked: _vm._q(_vm.newVote.picked, "gif1") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.newVote, "picked", "gif1")
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "mx-8", attrs: { for: "gif2" } }, [
+            _vm._v("\n                    GIF\n                    "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newVote.picked,
+                  expression: "newVote.picked"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                id: "gif2",
+                value: "gif2",
+                name: "pronunciation"
+              },
+              domProps: { checked: _vm._q(_vm.newVote.picked, "gif2") },
+              on: {
+                change: function($event) {
+                  _vm.$set(_vm.newVote, "picked", "gif2")
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex justify-center" }, [
+        _c("div", { staticClass: "w-3/4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newVote.reason,
+                expression: "newVote.reason"
+              }
+            ],
+            staticClass:
+              "bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-purple rounded w-full py-2 px-4 text-grey-darker leading-tight",
+            attrs: {
+              id: "reason",
+              type: "text",
+              placeholder: "Why do you think it should be pronounced that way?"
+            },
+            domProps: { value: _vm.newVote.reason },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newVote, "reason", $event.target.value)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex justify-center my-4" }, [
+        _c("div", { staticClass: "w-3/4" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newVote.name,
+                expression: "newVote.name"
+              }
+            ],
+            staticClass:
+              "bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-purple rounded w-full py-2 px-4 text-grey-darker leading-tight",
+            attrs: {
+              id: "name",
+              type: "text",
+              placeholder: "What is your name?"
+            },
+            domProps: { value: _vm.newVote.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.newVote, "name", $event.target.value)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex justify-center" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded my-8",
+            class: _vm.valid ? "" : "opacity-50 cursor-not-allowed",
+            attrs: { id: "submit", disabled: !_vm.valid },
+            on: { click: _vm.add }
+          },
+          [_vm._v("\n                Submit\n            ")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "py-8" },
+      [
+        _c("h4", { staticClass: "text-grey-darker text-center" }, [
+          _vm._v("User Responses:")
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.votes, function(vote) {
+          return _c("ul", [
+            _c("li", { staticClass: "py-4" }, [
+              _c("p", [
+                _c("span", { staticClass: "font-light uppercase" }, [
+                  _vm._v("gif")
+                ]),
+                _vm._v(" —\n                    " + _vm._s(vote.reason))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-sm mt-2" }, [
+                _vm._v("Submitted by "),
+                _c("span", { staticClass: "uppercase" }, [
+                  _vm._v(_vm._s(vote.name))
+                ]),
+                _vm._v(" on 2018-07-25")
+              ])
+            ])
+          ])
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "rounded shadow text-grey-darker" }, [
-        _c("div", { staticClass: "py-8" }, [
-          _c("h3", { staticClass: "text-center" }, [
-            _vm._v("How do you pronounce the word "),
-            _c("span", { staticClass: "font-light uppercase" }, [
-              _vm._v("gif")
-            ]),
-            _vm._v("?")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex justify-center py-8" }, [
-            _c("label", { staticClass: "mx-8", attrs: { for: "gif1" } }, [
-              _vm._v("\n                    GIF\n                    "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  id: "gif1",
-                  value: "gif1",
-                  name: "pronunciation"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "mx-8", attrs: { for: "gif2" } }, [
-              _vm._v("\n                    GIF\n                    "),
-              _c("input", {
-                attrs: {
-                  type: "radio",
-                  id: "gif2",
-                  value: "gif2",
-                  name: "pronunciation"
-                }
-              })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex justify-center" }, [
-          _c("div", { staticClass: "w-3/4" }, [
-            _c("input", {
-              staticClass:
-                "bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-purple rounded w-full py-2 px-4 text-grey-darker leading-tight",
-              attrs: {
-                id: "reason",
-                type: "text",
-                placeholder:
-                  "Why do you think it should be pronounced that way?"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex justify-center my-4" }, [
-          _c("div", { staticClass: "w-3/4" }, [
-            _c("input", {
-              staticClass:
-                "bg-grey-lighter appearance-none border-2 border-grey-lighter hover:border-purple rounded w-full py-2 px-4 text-grey-darker leading-tight",
-              attrs: {
-                id: "name",
-                type: "text",
-                placeholder: "What is your name?"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex justify-center" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded my-8",
-              attrs: { id: "submit" }
-            },
-            [_vm._v("\n                Submit\n            ")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "py-8" }, [
-        _c("h4", { staticClass: "text-grey-darker text-center" }, [
-          _vm._v("User Responses:")
-        ]),
-        _vm._v(" "),
-        _c("ul", [
-          _c("li", { staticClass: "py-4" }, [
-            _c("p", [
-              _c("span", { staticClass: "font-light uppercase" }, [
-                _vm._v("gif")
-              ]),
-              _vm._v(
-                " —\n                    It's the way the creator of the format wanted!"
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-sm mt-2" }, [
-              _vm._v("Submitted by "),
-              _c("span", { staticClass: "uppercase" }, [_vm._v("Samantha")]),
-              _vm._v(" on 2018-07-25")
-            ])
-          ])
-        ])
-      ])
+    return _c("h3", { staticClass: "text-center" }, [
+      _vm._v("How do you pronounce the word "),
+      _c("span", { staticClass: "font-light uppercase" }, [_vm._v("gif")]),
+      _vm._v("?")
     ])
   }
 ]
